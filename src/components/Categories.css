@@ -1,0 +1,65 @@
+.btn-container {
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: gray;
+  border: transparent;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  margin: 0 0.5rem;
+  letter-spacing: 1px;
+  padding: 0.375rem 0.75rem;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  border-radius: 0.25rem;
+}
+.active {
+  background-color: lightblue;
+}
+
+.filter-btn:hover {
+  background: darkblue;
+  color: white;
+}
+
+.nav__icons {
+  display: none;
+}
+
+header .navbar__burger {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  color: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top: 80px;
+
+    opacity: 1;
+  }
+  .filter-btn {
+    background-color: transparent;
+  }
+  .nav__icons {
+    display: block;
+  }
+  .nav__icons .MuiSvgIcon-root {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+}
