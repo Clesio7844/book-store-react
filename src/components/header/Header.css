@@ -4,7 +4,7 @@ header {
   align-items: center;
   justify-content: space-between;
   background: var(--white-color);
-  padding: 0.5rem 33%;
+  padding: 0.5rem 23%;
 }
 
 header .heading {

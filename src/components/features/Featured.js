@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Featured.css';
-import truncate from './truncate';
+import truncate from '../truncate';
 
 const url = `https://www.googleapis.com/books/v1/volumes?q=all&key=${process.env.REACT_APP_ACCESS_KEY}&maxResults=40`;
 
@@ -34,15 +34,12 @@ const Featured = ({ result }) => {
                 <span>Title:</span> {truncate(item.volumeInfo.title, 40)}
               </h1>
               <h2>
-                <span>Authors:</span> Nelson Pedro
+                <span>Authors:</span> {item.volumeInfo.authors}
               </h2>
               <h2>
-                <span>Pages:</span> 134
+                <span>Pages:</span> {item.volumeInfo.pageCount}
               </h2>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Officia, deleniti!
-              </p>
+              <p>description: {truncate(item?.volumeInfo.description, 140)}</p>
             </div>
             <div className='card__imge-feature'>
               <img
@@ -52,6 +49,7 @@ const Featured = ({ result }) => {
                     : `${item.volumeInfo.imageLinks.thumbnail}`
                 }
                 alt={item.title}
+                className='feature__image'
               />
             </div>
           </div>

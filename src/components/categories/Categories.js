@@ -37,9 +37,7 @@ const Categories = ({ categories, filterItems, result }) => {
       >
         Book
       </button>
-      <button type='button' className='filter-btn' onClick={handlick}>
-        Book
-      </button>
+
       <button type='button' className='filter-btn' onClick={handlick}>
         Magazines
       </button>

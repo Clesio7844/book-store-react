@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import truncate from './truncate';
+import truncate from '../truncate';
 import './Menu.css';
 import Modal from './Modal';
 
@@ -27,11 +27,12 @@ const Menu = ({ filetered }) => {
                       : `${book.volumeInfo.imageLinks.thumbnail}`
                   }
                   alt={book.title}
+                  className='menu__image'
                 />
               </div>
               <div className='product-desc'>
                 <h1>
-                  <span>Title:</span> {truncate(book.volumeInfo.title, 40)}
+                  <span>Title:</span> {truncate(book.volumeInfo.title, 20)}
                 </h1>
                 <h2>
                   <span>Authors:</span> {book.volumeInfo.authors}
