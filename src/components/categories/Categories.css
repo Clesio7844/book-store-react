@@ -11,7 +11,7 @@
   text-transform: capitalize;
   margin: 0 0.5rem;
   letter-spacing: 1px;
-  /* padding: 0.375rem 0.75rem; */
+
   padding: 1.5rem;
   color: black;
   cursor: pointer;
@@ -23,7 +23,7 @@
 }
 
 .filter-btn:hover {
-  background: darkblue;
+  background: lightblue;
   color: white;
 }
 
@@ -31,13 +31,21 @@
   display: none;
 }
 
-header .navbar__burger {
+/* header .navbar__burger {
   width: 40px;
   height: 40px;
   background: transparent;
   border: none;
   color: inherit;
+} */
+
+.btn-container .MuiSvgIcon-root {
+  visibility: hidden;
 }
+
+/* .menu__hamburger {
+  width: 50rem;
+} */
 
 @media only screen and (max-width: 600px) {
   .filter-btn {
@@ -46,7 +54,9 @@ header .navbar__burger {
   .nav__icons {
     display: block;
   }
-  .nav__icons .MuiSvgIcon-root {
+  .btn-container .MuiSvgIcon-root {
+    visibility: visible;
+
     height: 6rem;
     width: 6rem;
     background-color: white;

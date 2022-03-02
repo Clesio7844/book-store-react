@@ -23,8 +23,8 @@ function App() {
   const [books, setBooks] = useState([]);
   const [result, setResult] = useState([]);
   const [filetered, setFiltered] = useState([]);
-  const [active, setActive] = useState('');
-  const [lastItem, setLastItem] = useState([]);
+
+  // const [lastItem, setLastItem] = useState([]);
 
   const filterItems = categories => {
     if (categories === 'Home') {
@@ -32,7 +32,7 @@ function App() {
       return;
     }
     const newItems = result.filter(item => item.categories === categories);
-    setMenuItems(newItems);
+    setMenuItems(newItems); // filter the categories from api
   };
 
   const fetchTours = async () => {
@@ -60,29 +60,23 @@ function App() {
       </div>
 
       <section className='category__section'>
-        {/* <Categories filterItems={filterItems} categories={categories} /> */}
         <Categories
           filterItems={filterItems}
-          categories={categories}
-          result={result}
+          // categories={categories}
+          // result={result}
         />
 
         <div className='title'>
-          <p>{truncate(books?.volumeInfo?.description, 340)}</p>
+          <p>{truncate(books?.volumeInfo?.description, 340)}</p>{' '}
+          {/* used trucate funtion to reduce  the character*/}
         </div>
       </section>
-      {/* <Filter
-            result={result}
-            setFiltered={setFiltered}
-            active={active}
-            setActive={setActive}
-          /> */}
 
       <div className='menu__section'>
-        <Menu items={menuItems} result={result} filetered={filetered} />
+        <Menu filetered={filetered} /> {/* used filtered props*/}
       </div>
       <div className='featured__section'>
-        <Featured result={result} lastItem={lastItem} />
+        <Featured result={result} /> {/* used result props */}
       </div>
       <div className='footer'>
         <TwitterIcon />

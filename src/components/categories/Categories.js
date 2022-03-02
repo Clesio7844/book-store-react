@@ -1,60 +1,93 @@
 import React, { useState } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import './Categories.css';
 
-export const links = [
-  {
-    id: 1,
-    text: 'Home'
-  },
-  {
-    id: 2,
-    text: 'Book'
-  },
-  {
-    id: 1,
-    text: 'Magazines'
-  },
-  {
-    id: 1,
-    text: 'E-Books'
-  },
-  {
-    id: 1,
-    text: 'Magazines'
-  }
-];
-
-const Categories = ({ categories, filterItems, result }) => {
+const Categories = ({}) => {
   const [click, setClick] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const options = ['Home', 'Book', 'Magazines', 'E-Books', 'Account'];
+  const [selected, setSelected] = useState(-1);
 
-  // const handlick = () => setClick(!click);
-  // const [items, setItem] = useState(result);
+  const handlick = () => setClick(!click);
 
-  // const filterItem = categItem => {
-  //   const updatedItem = result.filter(item => {
-  //     return item.categories === categItem;
-  //   });
-  //   setItem(updatedItem);
-  // };
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const onMenuItemClick = (event, index) => {
+    setAnchorEl(null);
+    setSelected(index);
+  };
 
   return (
     <div className='btn-container'>
-      <button className='nav__icons' onClick={() => setClick(!click)}>
-        {click ? <CloseIcon /> : <MenuIcon />}
+      <Button
+        aria-controls='simple-menu'
+        aria-haspopup='true'
+        onClick={handleClick}
+        className='nav__icons'
+      >
+        <MenuIcon />
+      </Button>
+
+      <Menu
+        id='simple-menu'
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        className='menu__hamburger'
+        PaperProps={{
+          style: {
+            width: '30ch'
+          }
+        }}
+      >
+        {options.map((option, index) => (
+          <MenuItem
+            key={option}
+            onClick={event => onMenuItemClick(event, index)}
+            selected={index === selected}
+          >
+            {option}
+          </MenuItem>
+        ))}
+      </Menu>
+
+      <button
+        type='button'
+        className='filter-btn active'
+        // onClick={() => filterItems('Home')}
+        onClick={handlick}
+      >
+        Home
+      </button>
+      <button
+        type='button'
+        className='filter-btn '
+        // onClick={() => filterItems('E-Books')}
+        onClick={handlick}
+      >
+        Book
       </button>
 
-      <>
-        {links.map(link => {
-          const { id, text } = link;
-          return (
-            <button key={id} className='filter-btn active'>
-              {text}
-            </button>
-          );
-        })}
-      </>
+      <button type='button' className='filter-btn' onClick={handlick}>
+        Magazines
+      </button>
+      <button type='button' className='filter-btn' onClick={handlick}>
+        E-Books
+      </button>
+      <button type='button' className='filter-btn' onClick={handlick}>
+        Account
+      </button>
     </div>
   );
 };
