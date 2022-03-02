@@ -3,10 +3,33 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import './Categories.css';
 
+export const links = [
+  {
+    id: 1,
+    text: 'Home'
+  },
+  {
+    id: 2,
+    text: 'Book'
+  },
+  {
+    id: 1,
+    text: 'Magazines'
+  },
+  {
+    id: 1,
+    text: 'E-Books'
+  },
+  {
+    id: 1,
+    text: 'Magazines'
+  }
+];
+
 const Categories = ({ categories, filterItems, result }) => {
   const [click, setClick] = useState(false);
 
-  const handlick = () => setClick(!click);
+  // const handlick = () => setClick(!click);
   // const [items, setItem] = useState(result);
 
   // const filterItem = categItem => {
@@ -18,35 +41,20 @@ const Categories = ({ categories, filterItems, result }) => {
 
   return (
     <div className='btn-container'>
-      <button className='nav__icons' onClick={handlick}>
-        {click ? <MenuIcon /> : <CloseIcon />}
-      </button>
-      <button
-        type='button'
-        className='filter-btn active'
-        // onClick={() => filterItems('Home')}
-        onClick={handlick}
-      >
-        Home
-      </button>
-      <button
-        type='button'
-        className='filter-btn '
-        // onClick={() => filterItems('E-Books')}
-        onClick={handlick}
-      >
-        Book
+      <button className='nav__icons' onClick={() => setClick(!click)}>
+        {click ? <CloseIcon /> : <MenuIcon />}
       </button>
 
-      <button type='button' className='filter-btn' onClick={handlick}>
-        Magazines
-      </button>
-      <button type='button' className='filter-btn' onClick={handlick}>
-        E-Books
-      </button>
-      <button type='button' className='filter-btn' onClick={handlick}>
-        Account
-      </button>
+      <>
+        {links.map(link => {
+          const { id, text } = link;
+          return (
+            <button key={id} className='filter-btn active'>
+              {text}
+            </button>
+          );
+        })}
+      </>
     </div>
   );
 };

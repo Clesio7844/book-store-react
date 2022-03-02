@@ -38,3 +38,17 @@ header .navbar__burger {
   border: none;
   color: inherit;
 }
+
+@media only screen and (max-width: 600px) {
+  .filter-btn {
+    display: none;
+  }
+  .nav__icons {
+    display: block;
+  }
+  .nav__icons .MuiSvgIcon-root {
+    height: 6rem;
+    width: 6rem;
+    background-color: white;
+  }
+}

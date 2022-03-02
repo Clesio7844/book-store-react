@@ -3,7 +3,10 @@ import './App.css';
 import Header from './components/header/Header';
 import Menu from './components/menu/Menu';
 import Categories from './components/categories/Categories';
-// import items from './components/data';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+
 import truncate from './components/truncate';
 
 import Featured from './components/features/Featured';
@@ -81,7 +84,11 @@ function App() {
       <div className='featured__section'>
         <Featured result={result} lastItem={lastItem} />
       </div>
-      <div className='footer'></div>
+      <div className='footer'>
+        <TwitterIcon />
+        <FacebookIcon />
+        <InstagramIcon />
+      </div>
     </div>
   );
 }
